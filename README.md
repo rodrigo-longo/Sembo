@@ -1,4 +1,4 @@
-## SEMBO'S NEX ACQUIRED TALENT
+## SEMBO'S NEXT ACQUIRED TALENT
 
 Hi, first of all, I like to appreciate your confidence on a young boy that loves programing. The 22 of February I'm starting my fourth week on the Bootcamp whit Angular, so I do all the exercise with HTML, CSS and JavaScript.Like you know I don't have all the knowledge to execute all the requirements of the projects, but I get the way to get the result of the exercise in the best way I can. I hope you like it, and thanks to give me the oportunity to do that kind of exercises, that means a lot to me, and it's experience, and that's for me, APPRECIATE.
 
