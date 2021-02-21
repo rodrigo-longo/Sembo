@@ -1,11 +1,23 @@
 const url = 'http://localhost:3000/'; //URL FOR FETCH
 
 
+function cleanSearch(){
+    const pSearch = document.querySelectorAll('.pSearch')
+    console.log(pSearch);
+    
+    nonRes$$.classList.add('displayNone')
+    if(pSearch !== null){
+        for(let i = 0 ; i<pSearch.length; i++){
+        pSearch[i].remove();  
+    }}  
+}
+
 // QUERRY SELECTORS 
 const form$$ = document.querySelector('#form') 
 const button$$ = document.querySelector('#button')
 const input$$ = document.querySelector('#input')
 const result$$ = document.querySelector('.results')
+const nonRes$$ = document.querySelector('.nonResult')
 
 //Function to paint results on html
 function intoHTML(country , res ){
@@ -16,6 +28,7 @@ function intoHTML(country , res ){
     console.log(topScore)
 
     const pTop3$$ = document.createElement('p');
+    pTop3$$.classList.add('pSearch');
     
     
     pTop3$$.innerHTML = `
@@ -41,10 +54,12 @@ function intoHTML(country , res ){
 form$$.addEventListener('submit', (e) => {
     e.preventDefault();
     const inputUpper = input$$.value.toUpperCase();
+    
 
     if(inputUpper.includes('ES') || inputUpper.includes('SP') ){
         var country$$ = 'Spain';
         var inputValue = 'ES';
+
     }else if(inputUpper.includes('FR')){
         var country$$ = 'France';
         var inputValue = 'FR';
@@ -52,14 +67,15 @@ form$$.addEventListener('submit', (e) => {
         var country$$ = 'Italy';
         var inputValue = 'IT';
     } else{
-        alert("We don't have hotel stats of that Country.")
+        cleanSearch()
+        nonRes$$.classList.remove('displayNone')
         return;
     }
     console.log(inputValue);
-    fetch(url+inputValue).then(res => res.json()).then(res => {
-        
-        intoHTML(country$$ , res)
 
+    cleanSearch()
+    fetch(url+inputValue).then(res => res.json()).then(res => {
+        intoHTML(country$$ , res)
     })
 })
 
@@ -68,6 +84,7 @@ const countryID = ['ES','IT','FR'];
 const countryName = ['Spain (es)','Italy (it)','France (fr)']
 
 button$$.addEventListener('click', () => {
+    cleanSearch()
     for(let i = 0;i < countryID.length; i++){
         const idC = countryID[i];
         const nameC = countryName[i]
@@ -76,5 +93,3 @@ button$$.addEventListener('click', () => {
         })    
     }
 })    
-
-
