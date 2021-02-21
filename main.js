@@ -53,6 +53,7 @@ form$$.addEventListener('submit', (e) => {
         var inputValue = 'IT';
     } else{
         alert("We don't have hotel stats of that Country.")
+        return;
     }
     console.log(inputValue);
     fetch(url+inputValue).then(res => res.json()).then(res => {
